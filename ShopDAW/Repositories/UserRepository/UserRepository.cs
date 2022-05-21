@@ -12,9 +12,9 @@ namespace ShopDAW.Repositories.UserRepository
     public class UserRepository : GenericRepository<User>, IUserRepository
     {
         public UserRepository(ShopContext context) : base(context) { }
-        public async Task<List<User>> GetAllUsersWithEmail()
+        public async Task<List<User>> GetAllUsersWithAddress()
         {
-            return await _context.Users.Include(u => u.email).ToListAsync();
+            return await _context.Users.Include(u => u.address).ToListAsync();
         }
 
         public async Task<User> GetByEmail(string email)

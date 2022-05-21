@@ -9,7 +9,7 @@ namespace ShopDAW.Repositories.UserRepository
 {
     public interface IUserRepository : IGenericRepository<User>
     {
-        Task<List<User>> GetAllUsersWithEmail();
+        Task<List<User>> GetAllUsersWithAddress();
         Task<User> GetByEmail(string email);
     }
 }
