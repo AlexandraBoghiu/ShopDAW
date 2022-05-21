@@ -14,7 +14,8 @@ namespace ShopDAW.Repositories.ProductRepository
         public ProductRepository(ShopContext context) : base(context) { }
         public async Task<Product> GetByName(string name)
         {
-            return await _context.Products.Where(c => c.name.Equals(name)).FirstOrDefaultAsync();
+            return await _context.Products.Where(p => p.name.Equals(name)).FirstOrDefaultAsync();
         }
+
     }
 }

@@ -9,6 +9,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Shop.Data;
+using ShopDAW.Repositories.OrderRepository;
+using ShopDAW.Repositories.ProductRepository;
 using ShopDAW.Repositories.UserRepository;
 using System;
 using System.Collections.Generic;
@@ -37,6 +39,8 @@ namespace ShopDAW
             });
             services.AddDbContext<ShopContext>(options => options.UseSqlServer(@"Data Source = (localdb)\ProjectsV13; Initial Catalog = DAWDb; Integrated Security = True; Connect Timeout = 30; Encrypt = False; TrustServerCertificate = False; ApplicationIntent = ReadWrite; MultiSubnetFailover = False"));
             services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IProductRepository, ProductRepository>();
+            services.AddTransient<IOrderRepository, OrderRepository>();
             services.AddControllersWithViews().AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

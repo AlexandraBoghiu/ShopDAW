@@ -9,7 +9,7 @@ namespace ShopDAW.Repositories.OrderRepository
 {
     public interface IOrderRepository : IGenericRepository<Order>
     {
-        Task<Order> GetbyId(int id);
+        Task<Order> GetById(int id);
         Task<Order> GetByPayType(string payType);
 
     }

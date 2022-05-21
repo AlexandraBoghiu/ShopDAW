@@ -13,7 +13,7 @@ namespace ShopDAW.Repositories.OrderRepository
     {
         public OrderRepository(ShopContext context) : base(context) { }
 
-        public async Task<Order> GetbyId(int id)
+        public async Task<Order> GetById(int id)
         {
             return await _context.Orders.Where(o => o.id.Equals(id)).FirstOrDefaultAsync();
         }

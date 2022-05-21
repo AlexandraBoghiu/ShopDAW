@@ -68,7 +68,7 @@ namespace ShopDAW.Controllers
 
             var user = await _repository.GetByEmail(email);
             if (user == null)
-                return NotFound("Account doesn't exist");
+                return NotFound("User doesn't exist");
             user.name = dto.name;
             await _repository.SaveAsync();
             return Ok(new UserDTO(user));
