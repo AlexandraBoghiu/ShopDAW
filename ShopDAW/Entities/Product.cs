@@ -1,3 +1,4 @@
+using ShopDAW.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +11,6 @@ namespace Shop.Entities
         public int id { get; set; }
         public string name { get; set; }
         public int price { get; set; }
+        public ICollection<OrderProduct> orderProducts { get; set; }
     }
 }

@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Shop.Data;
 
 namespace ShopDAW.Migrations
 {
     [DbContext(typeof(ShopContext))]
-    partial class ShopContextModelSnapshot : ModelSnapshot
+    [Migration("20220521115200_AddedOneToManyRelationship")]
+    partial class AddedOneToManyRelationship
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -107,21 +109,6 @@ namespace ShopDAW.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("ShopDAW.Entities.OrderProduct", b =>
-                {
-                    b.Property<int>("productId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("orderId")
-                        .HasColumnType("int");
-
-                    b.HasKey("productId", "orderId");
-
-                    b.HasIndex("orderId");
-
-                    b.ToTable("OrderProduct");
-                });
-
             modelBuilder.Entity("Shop.Entities.Address", b =>
                 {
                     b.HasOne("Shop.Entities.User", "User")
@@ -142,35 +129,6 @@ namespace ShopDAW.Migrations
                         .IsRequired();
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("ShopDAW.Entities.OrderProduct", b =>
-                {
-                    b.HasOne("Shop.Entities.Order", "Order")
-                        .WithMany("orderProducts")
-                        .HasForeignKey("orderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Shop.Entities.Product", "Product")
-                        .WithMany("orderProducts")
-                        .HasForeignKey("productId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Order");
-
-                    b.Navigation("Product");
-                });
-
-            modelBuilder.Entity("Shop.Entities.Order", b =>
-                {
-                    b.Navigation("orderProducts");
-                });
-
-            modelBuilder.Entity("Shop.Entities.Product", b =>
-                {
-                    b.Navigation("orderProducts");
                 });
 
             modelBuilder.Entity("Shop.Entities.User", b =>
