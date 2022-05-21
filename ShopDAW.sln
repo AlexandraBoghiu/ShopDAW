@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31729.503
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopDAW", "ShopDAW\ShopDAW.csproj", "{1817ACB7-F70B-415F-BA0E-54D42360F9C2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1817ACB7-F70B-415F-BA0E-54D42360F9C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1817ACB7-F70B-415F-BA0E-54D42360F9C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1817ACB7-F70B-415F-BA0E-54D42360F9C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1817ACB7-F70B-415F-BA0E-54D42360F9C2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FD9835EC-0F1E-4A73-8F63-B0814C7A9558}
+	EndGlobalSection
+EndGlobal
