@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ShopDAW.Entities.DTOs
 {
-    public class UserDTO
+    public class ClientDTO
     {
         public int id { get; set; }
         public string name { get; set; }
@@ -14,13 +14,13 @@ namespace ShopDAW.Entities.DTOs
         public string email { get; set; }
         public Address address { get; set; }
         public List<Order> orders { get; set; }
-        public UserDTO(User user)
+        public ClientDTO(Client client)
         {
-            this.id = user.id;
-            this.name = user.name;
-            this.phone = user.phone;
-            this.email = user.email;
-            this.address = user.address;
+            this.id = client.id;
+            this.name = client.name;
+            this.phone = client.phone;
+            this.email = client.email;
+            this.address = client.address;
             this.orders = new List<Order>();
 
         }

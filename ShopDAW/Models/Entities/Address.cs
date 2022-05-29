@@ -11,7 +11,7 @@ namespace Shop.Entities
         public string city { get; set; }
         public string street { get; set; }
         public int number { get; set; }
-        public int userId { get; set; }
-        public User User { get; set; }
+        public int clientId { get; set; }
+        public Client Client { get; set; }
     }
 }

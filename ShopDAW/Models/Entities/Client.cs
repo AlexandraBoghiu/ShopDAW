@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Shop.Entities
 {
-    public class User
+    public class Client
     {
         public int id { get; set; }
         public string name { get; set; }

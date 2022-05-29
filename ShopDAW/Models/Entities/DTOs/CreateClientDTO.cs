@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ShopDAW.Entities.DTOs
 {
-    public class CreateUserDTO
+    public class CreateClientDTO
     {
         public string name { get; set; }
         public Address address { get; set; }

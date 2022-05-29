@@ -36,7 +36,7 @@ namespace ShopDAW.Controllers
             newOrder.value = dto.value;
             newOrder.payType = dto.payType;
             newOrder.date = dto.date;
-            newOrder.userId = dto.userId;
+            newOrder.clientId = dto.clientId;
             _repository.Create(newOrder);
             await _repository.SaveAsync();
             return Ok(new OrderDTO(newOrder));
