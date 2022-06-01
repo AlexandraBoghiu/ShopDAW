@@ -40,6 +40,24 @@ namespace ShopDAW.Services.UserServices
 
             if (result.Succeeded)
             {
+                await _userManager.AddToRoleAsync(registerUser, UserRoleType.User);
+                return true;
+            }
+            return false;
+        }
+        public async Task<bool> RegisterAdminAsync(RegisterUserDTO dto)
+        {
+            var registerUser = new User();
+            registerUser.UserName = dto.email;
+            registerUser.Email = dto.email;
+            registerUser.firstName = dto.firstName;
+            registerUser.lastName = dto.lastName;
+
+
+            var result = await _userManager.CreateAsync(registerUser, dto.password);
+
+            if (result.Succeeded)
+            {
                 await _userManager.AddToRoleAsync(registerUser, UserRoleType.Admin);
                 return true;
             }

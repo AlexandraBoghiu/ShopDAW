@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Shop.Entities;
 using ShopDAW.Entities.DTOs;
@@ -29,6 +30,7 @@ namespace ShopDAW.Controllers
             return Ok(new OrderDTO(order));
         }
         [HttpPost]
+        [Authorize(Roles = "User")]
         public async Task<IActionResult> CreateOrder(CreateOrderDTO dto)
         {
             Order newOrder = new Order();

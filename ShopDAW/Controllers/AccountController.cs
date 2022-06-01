@@ -25,9 +25,9 @@ namespace ShopDAW.Controllers
             _userService = userService;
         }
 
-        [HttpPost("register")]
+        [HttpPost("register-user")]
         [AllowAnonymous]
-        public async Task<IActionResult> Register([FromBody] RegisterUserDTO dto)
+        public async Task<IActionResult> RegisterUser([FromBody] RegisterUserDTO dto)
         {
             var exists = await _userManager.FindByEmailAsync(dto.email);
 
@@ -37,6 +37,23 @@ namespace ShopDAW.Controllers
             }
 
             var result = await _userService.RegisterUserAsync(dto);
+            if (result)
+                return Ok(result);
+            return BadRequest();
+        }
+
+        [HttpPost("register-admin")]
+        [AllowAnonymous]
+        public async Task<IActionResult> RegisterAdmin([FromBody] RegisterUserDTO dto)
+        {
+            var exists = await _userManager.FindByEmailAsync(dto.email);
+
+            if (exists != null)
+            {
+                return BadRequest("User already registered");
+            }
+
+            var result = await _userService.RegisterAdminAsync(dto);
             if (result)
                 return Ok(result);
             return BadRequest();

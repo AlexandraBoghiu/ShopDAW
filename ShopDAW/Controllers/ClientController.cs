@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Shop.Data;
 using Shop.Entities;
 using ShopDAW.Entities.DTOs;
 using ShopDAW.Repositories.ClientRepository;
@@ -15,9 +17,11 @@ namespace ShopDAW.Controllers
     public class ClientController : ControllerBase
     {
         private readonly IClientRepository _repository;
-        public ClientController(IClientRepository repository)
+        private readonly ShopContext _context;
+        public ClientController(IClientRepository repository, ShopContext context)
         {
             _repository = repository;
+            _context = context;
         }
 
         [HttpGet]
@@ -39,12 +43,38 @@ namespace ShopDAW.Controllers
             newClient.name = dto.name;
             newClient.address = dto.address;
             newClient.email = dto.email;
+            newClient.phone = dto.phone;
             _repository.Create(newClient);
             await _repository.SaveAsync();
             return Ok(new ClientDTO(newClient));
         }
+        [HttpGet("join")]
+        public IActionResult GetJoin()
+        {
+            var clients = _context.Clients;
+            var join = _context.Addresses.Join(clients, b => b.clientId, a => a.id, (b, a) => new
+            {
+                a.name,
+                b.city
+                
+            }).ToList();
+
+            return Ok(join);
+        }
+
+        [HttpGet("group-by")]
+        public IActionResult GetGroupBy()
+        {
+            var usersGroupedByLastName = _context.Users.GroupBy(user => user.lastName).Select(x => new
+            {
+                Key = x.Key,
+                Count = x.Count()
+            }).ToList();
+            return Ok(usersGroupedByLastName);
+        }
 
         [HttpGet("{email}")]
+        [Authorize(Roles = "User")]
         public async Task<IActionResult> GetClientByEmail(string email)
         {
             var user = await _repository.GetByEmail(email);

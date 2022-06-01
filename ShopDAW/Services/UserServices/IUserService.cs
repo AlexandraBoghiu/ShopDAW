@@ -9,6 +9,7 @@ namespace ShopDAW.Services.UserServices
     public interface IUserService
     {
         Task<bool> RegisterUserAsync(RegisterUserDTO dto);
+        Task<bool> RegisterAdminAsync(RegisterUserDTO dto);
         Task<string> LoginUser(LoginUserDTO dto);
     }
 }
